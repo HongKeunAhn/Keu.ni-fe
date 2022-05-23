@@ -3,23 +3,17 @@ import type { NextPage } from 'next';
 import React from 'react';
 import styled from 'styled-components';
 
+import { Header } from '../components/header';
+import { TextInput } from '../components/textInput';
+
 const LoginPage: NextPage = () => {
   return (
     <>
-      <Header>
-        <Link href='/'>
-          <Title>HAUS</Title>
-        </Link>
-        <Link href='/login'>
-          <p>login</p>
-        </Link>
-      </Header>
-      <Form>
-        <div>아이디</div>
-        <TextInput type='text' />
-        <div>비밀번호</div>
-        <TextInput type='password' />
-        <LoginButton disabled>로그인</LoginButton>
+      <Header />
+      <Form onSubmit={handleLogin}>
+        <TextInput id='userId' name='아이디' />
+        <TextInput id='password' name='비밀번호' />
+        <LoginButton type='submit'>로그인</LoginButton>
       </Form>
     </>
   );
@@ -27,26 +21,11 @@ const LoginPage: NextPage = () => {
 
 export default LoginPage;
 
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-`;
-
-const Title = styled.a`
-  font-size: 48px;
-`;
-
-const Form = styled.div`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   margin-top: 40px;
   padding: 0 20px 40px;
-`;
-
-const TextInput = styled.input`
-  border: 1px solid #000;
 `;
 
 const LoginButton = styled.button`
