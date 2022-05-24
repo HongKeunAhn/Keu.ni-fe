@@ -1,15 +1,35 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+
+import { ACCESS_TOKEN, PATH } from '../../constants';
 
 const Header = () => {
+  const [userToken, setUserToken] = useState<string | undefined>('');
+
+  const handleLogout = () => {
+    localStorage.removeItem(ACCESS_TOKEN);
+    setUserToken(undefined);
+  };
+
+  useEffect(() => {
+    setUserToken(localStorage?.getItem(ACCESS_TOKEN) || undefined);
+  }, []);
+
   return (
     <Wrapper>
-      <Link href='/'>
+      <Link href={PATH.HOME}>
         <Title>HAUS</Title>
       </Link>
-      <Link href='/login'>
-        <p>login</p>
-      </Link>
+      {userToken ? (
+        <Button type='button' onClick={handleLogout}>
+          login out
+        </Button>
+      ) : (
+        <Link href={PATH.LOGIN}>
+          <p>login</p>
+        </Link>
+      )}
     </Wrapper>
   );
 };
@@ -25,4 +45,9 @@ const Wrapper = styled.div`
 
 const Title = styled.a`
   font-size: 48px;
+`;
+
+const Button = styled.button`
+  padding: 5px;
+  border: 1px solid #ccc;
 `;

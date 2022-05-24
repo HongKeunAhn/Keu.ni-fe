@@ -3,13 +3,14 @@ import styled from 'styled-components';
 type TextInputType = {
   id: string;
   name: string;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 };
 
-const TextInput = ({ id, name }: TextInputType) => {
+const TextInput: React.FC<TextInputType> = ({ id, name, onBlur }) => {
   return (
     <>
       <label htmlFor={id}>{name}</label>
-      <Input type='text' id={id} />
+      <Input type='text' id={id} onBlur={onBlur} />
     </>
   );
 };
