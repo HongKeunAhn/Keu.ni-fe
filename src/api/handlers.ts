@@ -45,7 +45,8 @@ export const handlers = [
     )
   }),
 
-  rest.get('/products', (req, res, ctx) => {
+  // getServerSideProps에서 절대 경로로 써야된다는 에러로 주소 수정
+  rest.get('https://localhost:3000/products', (req, res, ctx) => {
     const { page = 1, size = 10 } = parseQueryString(req.url.search);
 
     const start = (Number(page) - 1) * Number(size);

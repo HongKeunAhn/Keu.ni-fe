@@ -3,4 +3,14 @@ export type Product = {
   name: string;
   thumbnail: string | null;
   price: number;
-}
+};
+
+export type ProductListProps = {
+  products: Product[];
+};
+
+
+export type ProductsProps = {
+  products: Product[];
+  totalCount: number;
+};
