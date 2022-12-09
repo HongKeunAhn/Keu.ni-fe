@@ -1,3 +1,5 @@
+# 테스트용 repo입니다.
+
 # 식스샵 프론트개발자 채용 과제
 
 - [과제 안내 링크](https://www.notion.so/sixshop/af7f8a9586b648e6ba92a8c24ff0ef66)
